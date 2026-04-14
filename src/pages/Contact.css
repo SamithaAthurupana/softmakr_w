@@ -1,6 +1,6 @@
 .contact-page {}
 
-.contact-section { padding: 60px 0; background: var(--bg); transition: background 0.35s; }
+.contact-section { padding: 60px 0; background: var(--bg); transition: background 0.35s; position: relative; overflow: hidden; }
 .contact-grid { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: start; }
 
 [data-theme="dark"] .contact-title {

@@ -252,15 +252,17 @@ const logos = [
 export default function TechPartners() {
   return (
     <div className="tech-strip">
-      <h4>Our Technology Partners</h4>
-      <div className="tech-marquee-wrapper">
-        <div className="tech-marquee-track">
-          {logos.map((logo, i) => (
-            <div className="tech-marquee-item" key={`a-${i}`}>{logo}</div>
-          ))}
-          {logos.map((logo, i) => (
-            <div className="tech-marquee-item" key={`b-${i}`} aria-hidden="true">{logo}</div>
-          ))}
+      <div className="tech-strip-container">
+        <h4>Our Technology Partners</h4>
+        <div className="tech-marquee-wrapper">
+          <div className="tech-marquee-track">
+            {logos.map((logo, i) => (
+              <div className="tech-marquee-item" key={`a-${i}`}>{logo}</div>
+            ))}
+            {logos.map((logo, i) => (
+              <div className="tech-marquee-item" key={`b-${i}`} aria-hidden="true">{logo}</div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

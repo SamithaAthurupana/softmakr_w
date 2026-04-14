@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import ClientLogos from '../components/ClientLogos';
 import TechPartners from '../components/TechPartners';
+import ParticleNetwork from '../components/three/ParticleNetwork';
+import WaveGrid from '../components/three/WaveGrid';
 import './Careers.css';
 
 const positions = [
@@ -31,13 +33,14 @@ export default function Careers() {
     <div className="careers-page">
       {/* Hero */}
       <section className="careers-hero">
-        <div className="container">
+        <ParticleNetwork />
+        <div className="container careers-hero-inner" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-label">Join Our Team</div>
-          <h1 className="section-heading">We build great digital products<br />and AI solutions.</h1>
-          <p className="section-sub">
+          <h1 className="careers-hero-title">Build the Future With Us</h1>
+          <p className="careers-hero-sub">
             Join our team of engineers, designers, and innovators building modern software, AI solutions, and digital products for ambitious businesses worldwide.
           </p>
-          <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
+          <div className="careers-hero-actions">
             <Link to="/contact" className="btn-primary">Get In Touch</Link>
             <Link to="/about" className="btn-outline">Learn About Us</Link>
           </div>
@@ -67,7 +70,12 @@ export default function Careers() {
                   </div>
                 </div>
                 <div className="position-action">
-                  <Link to="/contact" className="btn-primary apply-btn">Apply Now</Link>
+                  <Link
+                    to={`/careers/apply?position=${encodeURIComponent(pos.title)}`}
+                    className="btn-primary apply-btn"
+                  >
+                    Apply Now
+                  </Link>
                 </div>
               </div>
             ))}
@@ -77,7 +85,8 @@ export default function Careers() {
 
       {/* Why Join */}
       <section className="why-join">
-        <div className="container">
+        <WaveGrid />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="why-join-grid">
             <div className="why-join-text">
               <div className="section-label">Why Softmakr</div>

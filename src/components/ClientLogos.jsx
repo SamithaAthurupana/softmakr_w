@@ -103,16 +103,16 @@ const logos = [
 export default function ClientLogos() {
   return (
     <div className="client-strip">
-      <div className="marquee-wrapper">
-        <div className="marquee-track">
-          {/* First set */}
-          {logos.map((logo, i) => (
-            <div className="marquee-item" key={`a-${i}`}>{logo}</div>
-          ))}
-          {/* Duplicate for seamless loop */}
-          {logos.map((logo, i) => (
-            <div className="marquee-item" key={`b-${i}`} aria-hidden="true">{logo}</div>
-          ))}
+      <div className="client-strip-container">
+        <div className="marquee-wrapper">
+          <div className="marquee-track">
+            {logos.map((logo, i) => (
+              <div className="marquee-item" key={`a-${i}`}>{logo}</div>
+            ))}
+            {logos.map((logo, i) => (
+              <div className="marquee-item" key={`b-${i}`} aria-hidden="true">{logo}</div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

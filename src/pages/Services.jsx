@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import ClientLogos from '../components/ClientLogos';
 import TechPartners from '../components/TechPartners';
+import ParticleNetwork from '../components/three/ParticleNetwork';
+import WaveGrid from '../components/three/WaveGrid';
 import './Services.css';
 
 const categories = [
@@ -71,7 +73,8 @@ export default function Services() {
     <div className="services-page">
       {/* Hero */}
       <section className="page-hero">
-        <div className="container">
+        <ParticleNetwork />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-label">Our Services</div>
           <h1 className="section-heading">
             We build great digital products<br />and AI solutions.
@@ -91,7 +94,8 @@ export default function Services() {
 
       {/* What we can build */}
       <section className="what-we-build">
-        <div className="container">
+        <WaveGrid />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="dark-section-header-services">
             <h2>What we can build for you</h2>
           </div>

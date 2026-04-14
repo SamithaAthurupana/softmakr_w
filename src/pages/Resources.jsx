@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import ClientLogos from '../components/ClientLogos';
 import TechPartners from '../components/TechPartners';
+import ParticleNetwork from '../components/three/ParticleNetwork';
+import WaveGrid from '../components/three/WaveGrid';
 import './Resources.css';
 
 const categories = [
@@ -83,13 +85,14 @@ export default function Resources() {
     <div className="resources-page">
       {/* Hero */}
       <section className="resources-hero">
-        <div className="container resources-hero-inner">
+        <ParticleNetwork />
+        <div className="container resources-hero-inner" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-label">Knowledge Base</div>
           <h1 className="section-heading">Insights, Guides & Resources</h1>
           <p className="section-sub">
             Explore expert insights, technical guides, and real-world case studies on software development, AI solutions, and modern technology.
           </p>
-          <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
+          <div style={{ display: 'flex', gap: 12, marginTop: 24, justifyContent: 'center' }}>
             <Link to="/contact" className="btn-primary">Talk to an Expert</Link>
             <Link to="/resources#case-studies" className="btn-outline">View Case Studies</Link>
           </div>
@@ -102,7 +105,7 @@ export default function Resources() {
       {/* Explore by Category */}
       <section className="categories-section">
         <div className="container">
-          <div className="dark-section-header-res">
+          <div className="dark-section-header-res" style={{ textAlign: 'center' }}>
             <h2>Explore by Category</h2>
           </div>
           <div className="categories-grid">
@@ -141,7 +144,7 @@ export default function Resources() {
       <section className="blog-section alt-bg">
         <div className="container">
           <div className="dark-section-header-res">
-            <h2>Blog Articles</h2>
+            <h2>More Articles</h2>
           </div>
           <div className="blog-grid">
             {blogArticles.slice(3, 6).map((art, i) => (
@@ -163,7 +166,8 @@ export default function Resources() {
 
       {/* Case Studies */}
       <section className="case-studies-section" id="case-studies">
-        <div className="container">
+        <WaveGrid />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="dark-section-header-res">
             <h2>Case Studies</h2>
           </div>

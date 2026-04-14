@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TechPartners from '../components/TechPartners';
+import ParticleNetwork from '../components/three/ParticleNetwork';
 import './Contact.css';
 
 export default function Contact() {
@@ -31,7 +32,8 @@ export default function Contact() {
   return (
     <div className="contact-page">
       <section className="contact-section">
-        <div className="container">
+        <ParticleNetwork />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="contact-grid">
             {/* Left - Form */}
             <div className="contact-form-panel">

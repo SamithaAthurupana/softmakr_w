@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import ClientLogos from '../components/ClientLogos';
 import TechPartners from '../components/TechPartners';
+import ParticleNetwork from '../components/three/ParticleNetwork';
+import FloatingGeometry from '../components/three/FloatingGeometry';
 import './Home.css';
 
 const serviceGroups = [
@@ -69,11 +71,11 @@ const serviceGroups = [
 export default function Home() {
   return (
     <div className="home-page">
-      {/* Hero */}
+      {/* Hero with particle network background */}
       <section className="hero-section">
-        <div className="container">
+        <ParticleNetwork />
+        <div className="container hero-inner">
           <div className="hero-content">
-            {/* <div className="section-label">Softmakr</div> */}
             <h1 className="hero-title">
               Software Development & AI Solutions That Fit Your Business
             </h1>
@@ -84,6 +86,9 @@ export default function Home() {
               <Link to="/contact" className="btn-primary">Request Live Demo</Link>
               <Link to="/services" className="btn-outline">Learn More</Link>
             </div>
+          </div>
+          <div className="hero-3d">
+            <FloatingGeometry size={320} />
           </div>
         </div>
       </section>

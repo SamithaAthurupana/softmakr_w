@@ -8,6 +8,7 @@ import Services from './pages/Services';
 import About from './pages/About';
 import CustomerStories from './pages/CustomerStories';
 import Careers from './pages/Careers';
+import Apply from './pages/Apply';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
 import './index.css';
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/customer-stories" element={<CustomerStories />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/careers/apply" element={<Apply />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

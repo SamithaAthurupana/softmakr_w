@@ -2,10 +2,27 @@
   border-top: 1px solid var(--border);
   padding: 36px 0 40px;
   background: var(--bg-secondary);
-  overflow: hidden;
-  position: relative;
   transition: background 0.35s;
 }
+
+.tech-strip-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+}
+.tech-strip-container::before,
+.tech-strip-container::after {
+  content: '';
+  position: absolute;
+  top: 56px; bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.tech-strip-container::before { left: 28px;  background: linear-gradient(to right, var(--bg-secondary), transparent); }
+.tech-strip-container::after  { right: 28px; background: linear-gradient(to left,  var(--bg-secondary), transparent); }
+
 .tech-strip h4 {
   text-align: center;
   font-size: 13px;
@@ -15,17 +32,6 @@
   text-transform: uppercase;
   margin-bottom: 28px;
 }
-.tech-strip::before,
-.tech-strip::after {
-  content: '';
-  position: absolute;
-  top: 70px; bottom: 0;
-  width: 100px;
-  z-index: 2;
-  pointer-events: none;
-}
-.tech-strip::before { left:  0; background: linear-gradient(to right, var(--bg-secondary), transparent); }
-.tech-strip::after  { right: 0; background: linear-gradient(to left,  var(--bg-secondary), transparent); }
 
 .tech-marquee-wrapper { overflow: hidden; width: 100%; }
 .tech-marquee-track {

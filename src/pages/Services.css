@@ -1,12 +1,12 @@
 .services-page {}
 
-.page-hero { padding: 68px 0 44px; background: var(--bg); transition: background 0.35s; }
+.page-hero { padding: 68px 0 44px; background: var(--bg); transition: background 0.35s; position: relative; overflow: hidden; }
 [data-theme="dark"] .page-hero .section-heading {
   background: linear-gradient(135deg, #e4f2ec 0%, var(--accent) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
-.what-we-build { padding: 52px 0; background: var(--bg); transition: background 0.35s; }
+.what-we-build { padding: 52px 0; background: var(--bg); transition: background 0.35s; position: relative; overflow: hidden; }
 
 .build-category { margin-bottom: 48px; }
 .cat-label {

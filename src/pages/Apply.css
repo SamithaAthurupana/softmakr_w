@@ -1,0 +1,157 @@
+.apply-page { background: var(--bg); min-height: 100vh; }
+
+/* Hero */
+.apply-hero {
+  padding: 80px 0 56px;
+  background: var(--bg);
+  transition: background 0.35s;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.apply-hero-inner { max-width: 640px; margin: 0 auto; }
+.apply-hero-title {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.12;
+  color: var(--text);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+[data-theme="dark"] .apply-hero-title {
+  background: linear-gradient(135deg, #e4f2ec 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.apply-hero-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+@media (max-width: 600px) { .apply-hero-title { font-size: 28px; } }
+
+/* Form section */
+.apply-form-section { padding: 48px 0 80px; background: var(--bg-secondary); transition: background 0.35s; }
+
+.apply-form-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 44px;
+}
+@media (max-width: 600px) { .apply-form-wrap { padding: 24px 20px; } }
+
+.apply-position-badge {
+  display: inline-block;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+
+/* Form elements */
+.apply-form { display: flex; flex-direction: column; gap: 20px; }
+.apply-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 600px) { .apply-form-row { grid-template-columns: 1fr; } }
+
+.apply-form-group { display: flex; flex-direction: column; gap: 6px; }
+.apply-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.apply-form-group input,
+.apply-form-group textarea,
+.apply-form-group select {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text);
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+}
+.apply-form-group input:focus,
+.apply-form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.apply-form-group textarea { resize: vertical; min-height: 120px; }
+
+/* File upload */
+.apply-file-drop { position: relative; }
+.apply-file-input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0; overflow: hidden;
+}
+.apply-file-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: border-color 0.2s, background 0.2s;
+  text-align: center;
+}
+.apply-file-label:hover { border-color: var(--accent); background: var(--bg-secondary); color: var(--accent); }
+.apply-file-chosen { color: var(--accent); font-weight: 600; }
+.apply-file-icon { font-size: 18px; }
+
+/* Error */
+.apply-error {
+  color: #ef4444;
+  font-size: 13px;
+  padding: 10px 14px;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 8px;
+}
+
+/* Submit */
+.apply-submit-btn {
+  width: 100%;
+  padding: 13px;
+  font-size: 15px;
+  margin-top: 4px;
+}
+.apply-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Success */
+.apply-success {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.apply-success-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0a1f18;
+  font-size: 32px;
+  font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.apply-success h2 { font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 16px; }
+.apply-success p  { font-size: 16px; color: var(--text-muted); line-height: 1.7; max-width: 480px; }
