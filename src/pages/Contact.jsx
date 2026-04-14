@@ -17,16 +17,45 @@ export default function Contact() {
     message: '',
     agree: false,
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus('sending');
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/manodya1015@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: 'New Demo Request — Softmakr',
+          _template: 'table',
+          _captcha: 'false',
+          'First Name':    form.firstName,
+          'Last Name':     form.lastName,
+          'Company':       form.companyName,
+          'Email':         form.email,
+          'Phone':         form.phone || 'Not provided',
+          'Country':       form.country,
+          'Industry':      form.industry || 'Not provided',
+          'Employees':     form.employees || 'Not provided',
+          'Interested In': form.interest || 'Not provided',
+          'Message':       form.message || 'No message',
+        }),
+      });
+      const json = await res.json();
+      if (json.success === 'true' || json.success === true) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -43,7 +72,7 @@ export default function Contact() {
                 Thank you for your interest in Softmakr. Please share your details, and our team will get in touch to discuss how we can best support your needs.
               </p>
 
-              {submitted ? (
+              {status === 'success' ? (
                 <div className="success-message">
                   <div className="success-icon">✓</div>
                   <h3>Thank you!</h3>
@@ -152,7 +181,14 @@ export default function Contact() {
                     </label>
                   </div>
 
-                  <button type="submit" className="btn-primary form-submit-btn">Submit Request</button>
+                  {status === 'error' && (
+                    <p style={{ color: '#ef4444', fontSize: 13, marginBottom: 8 }}>
+                      Something went wrong. Please try again.
+                    </p>
+                  )}
+                  <button type="submit" className="btn-primary form-submit-btn" disabled={status === 'sending'}>
+                    {status === 'sending' ? 'Sending…' : 'Submit Request'}
+                  </button>
                 </form>
               )}
             </div>

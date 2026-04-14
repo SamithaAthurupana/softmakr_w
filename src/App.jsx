@@ -9,6 +9,7 @@ import About from './pages/About';
 import CustomerStories from './pages/CustomerStories';
 import Careers from './pages/Careers';
 import Apply from './pages/Apply';
+import ApplySuccess from './pages/ApplySuccess';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
 import './index.css';
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/customer-stories" element={<CustomerStories />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/careers/apply" element={<Apply />} />
+            <Route path="/careers/apply/success" element={<ApplySuccess />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

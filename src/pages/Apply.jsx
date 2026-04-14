@@ -1,89 +1,24 @@
-import { useState, useRef } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ParticleNetwork from '../components/three/ParticleNetwork';
 import './Apply.css';
-
-// Destination is configured server-side by FormSubmit — not shown in the UI.
-const FS_ENDPOINT = 'https://formsubmit.co/ajax/manodya1015@gmail.com';
 
 export default function Apply() {
   const [params] = useSearchParams();
   const positionFromQuery = params.get('position') || '';
-  const fileInputRef = useRef();
 
-  const [form, setForm] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    position: positionFromQuery,
-    linkedin: '',
-    portfolio: '',
-    coverLetter: '',
-  });
   const [cvFile, setCvFile] = useState(null);
-  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [position, setPosition] = useState(positionFromQuery);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
-  };
+  // The _next URL tells FormSubmit where to redirect after a successful submission.
+  // It must be an absolute URL. We build it from the current origin so it works
+  // both in development and in production automatically.
+  const successUrl = `${window.location.origin}/careers/apply/success`;
 
   const handleFile = (e) => {
     const file = e.target.files[0];
     if (file) setCvFile(file);
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!cvFile) { alert('Please attach your CV before submitting.'); return; }
-
-    setStatus('sending');
-
-    const data = new FormData();
-    data.append('Position',      form.position);
-    data.append('Full Name',     form.fullName);
-    data.append('Email',         form.email);
-    data.append('Phone',         form.phone || 'Not provided');
-    data.append('LinkedIn',      form.linkedin || 'Not provided');
-    data.append('Portfolio',     form.portfolio || 'Not provided');
-    data.append('Cover Letter',  form.coverLetter);
-    data.append('CV',            cvFile, cvFile.name);
-    // FormSubmit hidden fields
-    data.append('_subject', `New Job Application — ${form.position}`);
-    data.append('_captcha', 'false');
-    data.append('_template', 'table');
-
-    try {
-      const res = await fetch(FS_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      const json = await res.json();
-      if (json.success === 'true' || json.success === true) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
-  };
-
-  if (status === 'success') {
-    return (
-      <div className="apply-page">
-        <ParticleNetwork />
-        <div className="container apply-success" style={{ position: 'relative', zIndex: 1 }}>
-          <div className="apply-success-icon">✓</div>
-          <h2>Application Submitted!</h2>
-          <p>
-            Thank you, <strong>{form.fullName}</strong>. We've received your application for&nbsp;
-            <strong>{form.position}</strong>. Our team will review it and be in touch within 3–5 business days.
-          </p>
-          <Link to="/careers" className="btn-primary" style={{ marginTop: 28, display: 'inline-block' }}>
-            Back to Careers
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="apply-page">
@@ -101,21 +36,38 @@ export default function Apply() {
       <section className="apply-form-section">
         <div className="container">
           <div className="apply-form-wrap">
-            {form.position && (
+            {position && (
               <div className="apply-position-badge">
-                Applying for: <strong>{form.position}</strong>
+                Applying for: <strong>{position}</strong>
               </div>
             )}
 
-            <form className="apply-form" onSubmit={handleSubmit}>
+            {/*
+              Native HTML form POST — FormSubmit.co receives the multipart data
+              (including the CV file) and emails it to the configured destination.
+              No JavaScript fetch needed; the browser handles the upload natively.
+            */}
+            <form
+              className="apply-form"
+              action="https://formsubmit.co/manodya1015@gmail.com"
+              method="POST"
+              encType="multipart/form-data"
+            >
+              {/* FormSubmit hidden control fields */}
+              <input type="hidden" name="_subject"  value={`New Job Application — ${position || 'Softmakr'}`} />
+              <input type="hidden" name="_captcha"  value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next"     value={successUrl} />
+
               {/* Position */}
               <div className="apply-form-group">
-                <label>Position Applying For *</label>
+                <label htmlFor="ap-position">Position Applying For *</label>
                 <input
-                  name="position"
+                  id="ap-position"
+                  name="Position"
                   type="text"
-                  value={form.position}
-                  onChange={handleChange}
+                  value={position}
+                  onChange={e => setPosition(e.target.value)}
                   placeholder="e.g. Frontend Developer (React / Next.js)"
                   required
                 />
@@ -124,41 +76,40 @@ export default function Apply() {
               {/* Name + Email */}
               <div className="apply-form-row">
                 <div className="apply-form-group">
-                  <label>Full Name *</label>
-                  <input name="fullName" type="text" value={form.fullName} onChange={handleChange} placeholder="Your full name" required />
+                  <label htmlFor="ap-name">Full Name *</label>
+                  <input id="ap-name" name="Full Name" type="text" placeholder="Your full name" required />
                 </div>
                 <div className="apply-form-group">
-                  <label>Email Address *</label>
-                  <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="you@example.com" required />
+                  <label htmlFor="ap-email">Email Address *</label>
+                  <input id="ap-email" name="Email" type="email" placeholder="you@example.com" required />
                 </div>
               </div>
 
               {/* Phone + LinkedIn */}
               <div className="apply-form-row">
                 <div className="apply-form-group">
-                  <label>Phone Number</label>
-                  <input name="phone" type="tel" value={form.phone} onChange={handleChange} placeholder="+1 (555) 000-0000" />
+                  <label htmlFor="ap-phone">Phone Number</label>
+                  <input id="ap-phone" name="Phone" type="tel" placeholder="+1 (555) 000-0000" />
                 </div>
                 <div className="apply-form-group">
-                  <label>LinkedIn Profile</label>
-                  <input name="linkedin" type="url" value={form.linkedin} onChange={handleChange} placeholder="https://linkedin.com/in/yourname" />
+                  <label htmlFor="ap-linkedin">LinkedIn Profile</label>
+                  <input id="ap-linkedin" name="LinkedIn" type="url" placeholder="https://linkedin.com/in/yourname" />
                 </div>
               </div>
 
               {/* Portfolio */}
               <div className="apply-form-group">
-                <label>Portfolio / GitHub URL</label>
-                <input name="portfolio" type="url" value={form.portfolio} onChange={handleChange} placeholder="https://yourportfolio.com" />
+                <label htmlFor="ap-portfolio">Portfolio / GitHub URL</label>
+                <input id="ap-portfolio" name="Portfolio" type="url" placeholder="https://yourportfolio.com" />
               </div>
 
               {/* Cover Letter */}
               <div className="apply-form-group">
-                <label>Cover Letter *</label>
+                <label htmlFor="ap-cover">Cover Letter *</label>
                 <textarea
-                  name="coverLetter"
+                  id="ap-cover"
+                  name="Cover Letter"
                   rows={5}
-                  value={form.coverLetter}
-                  onChange={handleChange}
                   placeholder="Tell us why you'd be a great fit for this role and what excites you about Softmakr..."
                   required
                 />
@@ -169,12 +120,13 @@ export default function Apply() {
                 <label>Upload CV / Resume *</label>
                 <div className="apply-file-drop">
                   <input
-                    ref={fileInputRef}
                     type="file"
                     id="cv-upload"
+                    name="CV"
                     accept=".pdf,.doc,.docx"
                     onChange={handleFile}
                     className="apply-file-input"
+                    required
                   />
                   <label htmlFor="cv-upload" className="apply-file-label">
                     {cvFile ? (
@@ -192,14 +144,8 @@ export default function Apply() {
                 </div>
               </div>
 
-              {status === 'error' && (
-                <p className="apply-error">
-                  Something went wrong. Please try again or email us directly.
-                </p>
-              )}
-
-              <button type="submit" className="btn-primary apply-submit-btn" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Submitting…' : 'Submit Application'}
+              <button type="submit" className="btn-primary apply-submit-btn">
+                Submit Application
               </button>
             </form>
           </div>
