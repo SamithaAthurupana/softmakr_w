@@ -32,17 +32,12 @@
 
 .position-card {
   background: #fff;
-  border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 24px 28px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  transition: box-shadow 0.2s;
-}
-.position-card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
 .position-info {

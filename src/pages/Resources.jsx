@@ -121,7 +121,7 @@ export default function Resources() {
           </div>
           <div className="blog-grid">
             {blogArticles.slice(0, 3).map((art, i) => (
-              <div key={i} className="blog-card">
+              <div key={i} className="blog-card glow-card">
                 <div className="blog-card-img">
                   <img src={art.img} alt={art.title} />
                   <span className="blog-category-tag">{art.category}</span>
@@ -145,7 +145,7 @@ export default function Resources() {
           </div>
           <div className="blog-grid">
             {blogArticles.slice(3, 6).map((art, i) => (
-              <div key={i} className="blog-card">
+              <div key={i} className="blog-card glow-card">
                 <div className="blog-card-img">
                   <img src={art.img} alt={art.title} />
                   <span className="blog-category-tag">{art.category}</span>
@@ -169,7 +169,7 @@ export default function Resources() {
           </div>
           <div className="blog-grid">
             {caseStudies.map((cs, i) => (
-              <div key={i} className="blog-card">
+              <div key={i} className="blog-card glow-card">
                 <div className="blog-card-img">
                   <img src={cs.img} alt={cs.title} />
                   <span className="blog-category-tag">{cs.tag}</span>

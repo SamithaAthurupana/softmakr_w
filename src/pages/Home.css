@@ -66,14 +66,8 @@
 
 .service-card {
   background: #fff;
-  border: 1px solid #e5e7eb;
   border-radius: 10px;
   overflow: hidden;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.service-card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
 }
 .service-card-img {
   width: 100%;

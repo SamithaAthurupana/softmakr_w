@@ -1,45 +1,102 @@
+/* ── Section wrapper ─────────────────────────────────────── */
 .tech-strip {
   border-top: 1px solid #e5e7eb;
-  padding: 44px 0;
+  padding: 36px 0 40px;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
 }
+
 .tech-strip h4 {
   text-align: center;
-  font-size: 14px;
-  font-weight: 500;
-  color: #6b7280;
-  margin-bottom: 22px;
-  letter-spacing: 0.02em;
-}
-.tech-logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 42px;
-  flex-wrap: wrap;
-}
-.tech-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 14px;
-  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
 }
 
-/* Colored icon dots/badges */
-.tech-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 5px;
-  display: inline-block;
+/* Fade edges */
+.tech-strip::before,
+.tech-strip::after {
+  content: '';
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+.tech-strip::before {
+  left: 0;
+  background: linear-gradient(to right, #fff 0%, transparent 100%);
+}
+.tech-strip::after {
+  right: 0;
+  background: linear-gradient(to left, #fff 0%, transparent 100%);
+}
+
+/* ── Marquee ─────────────────────────────────────────────── */
+.tech-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.tech-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: tech-scroll 40s linear infinite;
+}
+
+.tech-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.tech-marquee-item {
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
 }
-.aws    { background: #FF9900; }
-.azure  { background: #0078D4; }
-.spring { background: #6DB33F; }
-.flutter{ background: #54C5F8; }
-.fastapi{ background: #009688; }
 
-@media (max-width: 600px) {
-  .tech-logos { gap: 24px; }
+@keyframes tech-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Each logo pill ──────────────────────────────────────── */
+.tech-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2e28;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+  transition: opacity 0.2s, transform 0.2s;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.tech-item:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.tech-item span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2e28;
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .tech-marquee-track { animation: none; }
 }

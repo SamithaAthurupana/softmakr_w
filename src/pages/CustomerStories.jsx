@@ -61,7 +61,7 @@ export default function CustomerStories() {
         <div className="container">
           <div className="testimonials-grid">
             {testimonials.map((t, i) => (
-              <div key={i} className="testimonial-card">
+              <div key={i} className="testimonial-card glow-card">
                 <div className="testimonial-img-placeholder">
                   <img src={t.avatar} alt={t.author} />
                 </div>

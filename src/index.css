@@ -24,6 +24,12 @@ body {
   color: var(--text-dark);
   background: var(--white);
   line-height: 1.6;
+  /* Subtle 60×60 grid — same technique as portfolio */
+  background-image:
+    linear-gradient(rgba(0, 212, 160, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 160, 0.055) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-attachment: fixed;
 }
 
 a {
@@ -230,7 +236,48 @@ img {
   .section-heading { font-size: 28px; }
 }
 
-/* Scrollbar */
+/* ── Glow card hover — applied globally to any .glow-card ── */
+.glow-card {
+  transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+  border: 1px solid var(--border);
+}
+.glow-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(0, 212, 160, 0.25),
+    0 8px 32px rgba(0, 212, 160, 0.12),
+    0 2px 8px rgba(0,0,0,0.06);
+  border-color: rgba(0, 212, 160, 0.35);
+  transform: translateY(-3px);
+}
+
+/* ── Accent glow on primary button ─────────────────────── */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 rgba(0, 212, 160, 0);
+  transition: background 0.2s, box-shadow 0.3s, transform 0.15s;
+}
+.btn-primary:hover {
+  box-shadow: 0 4px 20px rgba(0, 212, 160, 0.45);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* ── Section white card — sits above the grid ────────────── */
+/* White sections get a soft white wash so the grid shows
+   only at page edges / between sections */
+.hero-section,
+.about-hero,
+.careers-hero,
+.stories-hero,
+.resources-hero,
+.page-hero,
+.contact-section {
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(0px);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #f1f1f1; }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }

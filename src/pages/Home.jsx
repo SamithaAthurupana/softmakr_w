@@ -100,7 +100,7 @@ export default function Home() {
             </div>
             <div className="card-grid-3">
               {group.items.map((item, i) => (
-                <div key={i} className="service-card">
+                <div key={i} className="service-card glow-card">
                   <div className="service-card-img">
                     <img src={item.img} alt={item.title} />
                   </div>

@@ -56,7 +56,7 @@ export default function Careers() {
 
           <div className="positions-list">
             {positions.map((pos, i) => (
-              <div key={i} className="position-card">
+              <div key={i} className="position-card glow-card">
                 <div className="position-info">
                   <h3 className="position-title">{pos.title}</h3>
                   <p className="position-desc">{pos.desc}</p>

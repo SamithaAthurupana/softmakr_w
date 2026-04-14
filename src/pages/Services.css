@@ -45,13 +45,8 @@
 
 .build-card {
   background: #fff;
-  border: 1px solid #e5e7eb;
   border-radius: 10px;
   overflow: hidden;
-  transition: box-shadow 0.2s;
-}
-.build-card:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 .build-card-img {

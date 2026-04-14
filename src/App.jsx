@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CursorGlow from './components/CursorGlow';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import About from './pages/About';
@@ -13,6 +14,7 @@ import './index.css';
 export default function App() {
   return (
     <BrowserRouter>
+      <CursorGlow />
       <Navbar />
       <main>
         <Routes>

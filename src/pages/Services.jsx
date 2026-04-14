@@ -101,7 +101,7 @@ export default function Services() {
               <h3 className="cat-label">{cat.label}</h3>
               <div className="card-grid-3">
                 {cat.items.map((item, i) => (
-                  <div key={i} className="build-card">
+                  <div key={i} className="build-card glow-card">
                     <div className="build-card-img">
                       <img src={item.img} alt={item.title} />
                     </div>
