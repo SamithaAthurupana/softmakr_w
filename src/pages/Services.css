@@ -1,86 +1,28 @@
 .services-page {}
 
-.page-hero {
-  padding: 68px 0 44px;
-  background: #fff;
-}
-.page-hero .section-sub {
-  max-width: 560px;
+.page-hero { padding: 68px 0 44px; background: var(--bg); transition: background 0.35s; }
+[data-theme="dark"] .page-hero .section-heading {
+  background: linear-gradient(135deg, #e4f2ec 0%, var(--accent) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
-.dark-section-header-services {
-  background: #0a1f18;
-  color: #fff;
-  padding: 20px 28px;
-  border-radius: 8px;
-  margin-bottom: 36px;
-}
-.dark-section-header-services h2 {
-  font-size: 19px;
-  font-weight: 700;
-  color: #fff;
-}
+.what-we-build { padding: 52px 0; background: var(--bg); transition: background 0.35s; }
 
-.what-we-build {
-  padding: 52px 0;
-}
-
-.build-category {
-  margin-bottom: 48px;
-}
+.build-category { margin-bottom: 48px; }
 .cat-label {
-  font-size: 16px;
-  font-weight: 700;
-  color: #0a1f18;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #e5e7eb;
+  font-size: 16px; font-weight: 700; color: var(--text);
+  margin-bottom: 20px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
 }
 
-.card-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
+.card-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
 
-.build-card {
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-}
+.build-card { background: var(--bg-card); border-radius: 10px; overflow: hidden; transition: background 0.35s; }
+.build-card-img { width: 100%; height: 180px; overflow: hidden; background: var(--bg-secondary); }
+.build-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.build-card:hover .build-card-img img { transform: scale(1.04); }
+.build-card-title { font-size: 14px; font-weight: 700; color: var(--text);       padding: 14px 16px 6px; }
+.build-card-desc  { font-size: 13px; color: var(--text-muted); padding: 0 16px 16px; line-height: 1.65; }
 
-.build-card-img {
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
-  background: #d8f0ea;
-}
-.build-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
-.build-card:hover .build-card-img img {
-  transform: scale(1.04);
-}
-
-.build-card-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #0a1f18;
-  padding: 14px 16px 6px;
-}
-.build-card-desc {
-  font-size: 13px;
-  color: #6b7280;
-  padding: 0 16px 16px;
-  line-height: 1.65;
-}
-
-@media (max-width: 900px) {
-  .card-grid-3 { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-  .card-grid-3 { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) { .card-grid-3 { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px) { .card-grid-3 { grid-template-columns: 1fr; } }

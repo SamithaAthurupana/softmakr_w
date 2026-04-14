@@ -1,25 +1,17 @@
-/* Glow blob — fixed, pointer-events none so it never blocks clicks */
 .cursor-blob {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 500px;
   height: 500px;
   border-radius: 50%;
   background: radial-gradient(
     circle at center,
-    rgba(0, 212, 160, 0.13) 0%,
-    rgba(0, 212, 160, 0.06) 35%,
-    rgba(0, 212, 160, 0.01) 65%,
-    transparent 100%
+    var(--blob) 0%,
+    rgba(0, 212, 160, 0.04) 40%,
+    transparent 70%
   );
   pointer-events: none;
   z-index: 0;
   will-change: transform;
-  /* No transition — lerp in JS handles smoothness */
 }
-
-/* Hide on touch devices */
-@media (hover: none) {
-  .cursor-blob { display: none; }
-}
+@media (hover: none) { .cursor-blob { display: none; } }

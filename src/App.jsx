@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CursorGlow from './components/CursorGlow';
@@ -13,21 +14,23 @@ import './index.css';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <CursorGlow />
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/customer-stories" element={<CustomerStories />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-      <Footer />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <CursorGlow />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/customer-stories" element={<CustomerStories />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
