@@ -1,0 +1,167 @@
+/* ── Marquee container ────────────────────────────────────── */
+.client-strip {
+  padding: 32px 0;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fade edges */
+.client-strip::before,
+.client-strip::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.client-strip::before {
+  left: 0;
+  background: linear-gradient(to right, #fff 0%, transparent 100%);
+}
+.client-strip::after {
+  right: 0;
+  background: linear-gradient(to left, #fff 0%, transparent 100%);
+}
+
+/* Track — wide enough for both sets side-by-side */
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Base logo ───────────────────────────────────────────── */
+.client-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #1a3628;
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+  cursor: default;
+  user-select: none;
+}
+.client-logo:hover { opacity: 0.6; }
+
+/* ── Traveltic ───────────────────────────────────────────── */
+.cl-traveltic {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+/* ── Price Checker ────────────────────────────────────────── */
+.cl-pricechecker { align-items: center; }
+.pc-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.pc-main {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1a3628;
+}
+.pc-sub {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #4b7c65;
+  text-transform: uppercase;
+}
+
+/* ── Phamasys ─────────────────────────────────────────────── */
+.cl-phamasys {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 21px;
+  font-weight: 700;
+  font-style: italic;
+  color: #1a3628;
+  letter-spacing: 0.01em;
+}
+
+/* ── Plant Care ───────────────────────────────────────────── */
+.cl-plantcare {
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #1a3628;
+}
+
+/* ── MyClinic ─────────────────────────────────────────────── */
+.cl-myclinic { font-size: 18px; }
+.my-light {
+  font-weight: 300;
+  color: #8aab98;
+  font-size: 19px;
+}
+.clinic-bold {
+  font-weight: 800;
+  color: #1a3628;
+  font-size: 19px;
+}
+
+/* ── JobFinder ────────────────────────────────────────────── */
+.cl-jobfinder {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #1a3628;
+}
+
+/* ── TasteaTea ────────────────────────────────────────────── */
+.cl-tastea { font-size: 18px; }
+.tastea-dark {
+  font-weight: 800;
+  color: #1a3628;
+}
+.tastea-light {
+  font-weight: 300;
+  color: #8aab98;
+}
+
+/* ── TRUEROOT ─────────────────────────────────────────────── */
+.cl-trueroot {
+  font-size: 18px;
+  letter-spacing: 0.03em;
+}
+.true-gray {
+  font-weight: 700;
+  color: #9aafa7;
+}
+.root-dark {
+  font-weight: 900;
+  color: #1a3628;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}

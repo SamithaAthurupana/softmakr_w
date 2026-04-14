@@ -1,0 +1,127 @@
+.about-page {}
+
+.about-hero {
+  padding: 64px 0 32px;
+  background: #fff;
+}
+.about-hero-tagline {
+  font-size: 17px;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+/* Intro grid */
+.about-intro {
+  padding: 52px 0;
+  background: #fff;
+}
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.about-intro-text p {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.about-intro-text p:last-child { margin-bottom: 0; }
+.about-intro-img {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.about-intro-img img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Process */
+.our-process {
+  padding: 56px 0;
+  background: #f7fdfb;
+}
+.process-list {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.process-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.process-item:last-child { border-bottom: none; }
+.process-number {
+  background: #00d4a0;
+  color: #0a1f18;
+  font-weight: 800;
+  font-size: 13px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.process-content {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.6;
+  padding-top: 6px;
+}
+.process-content strong {
+  color: #0a1f18;
+  font-weight: 700;
+}
+
+/* CTA Banner */
+.about-cta-banner {
+  padding: 56px 0;
+  background: #fff;
+}
+.about-cta-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.about-cta-text h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0a1f18;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.about-cta-text p {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.about-cta-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.about-cta-img img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .about-intro-grid,
+  .about-cta-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

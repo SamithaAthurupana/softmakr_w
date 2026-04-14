@@ -1,0 +1,45 @@
+.tech-strip {
+  border-top: 1px solid #e5e7eb;
+  padding: 44px 0;
+}
+.tech-strip h4 {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 22px;
+  letter-spacing: 0.02em;
+}
+.tech-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  flex-wrap: wrap;
+}
+.tech-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* Colored icon dots/badges */
+.tech-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.aws    { background: #FF9900; }
+.azure  { background: #0078D4; }
+.spring { background: #6DB33F; }
+.flutter{ background: #54C5F8; }
+.fastapi{ background: #009688; }
+
+@media (max-width: 600px) {
+  .tech-logos { gap: 24px; }
+}
