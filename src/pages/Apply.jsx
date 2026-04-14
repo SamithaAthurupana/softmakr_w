@@ -1,24 +1,15 @@
 import { useState, useRef } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import emailjs from '@emailjs/browser';
 import ParticleNetwork from '../components/three/ParticleNetwork';
 import './Apply.css';
 
-// ── EmailJS configuration ─────────────────────────────────────
-// 1. Create a free account at https://www.emailjs.com
-// 2. Add a Gmail service and connect your Gmail account
-// 3. Create a template with these variables:
-//    {{position}}, {{full_name}}, {{email}}, {{phone}},
-//    {{linkedin}}, {{portfolio}}, {{cover_letter}}, {{cv_name}}
-// 4. Replace the three values below with your actual IDs
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+// Destination is configured server-side by FormSubmit — not shown in the UI.
+const FS_ENDPOINT = 'https://formsubmit.co/ajax/manodya1015@gmail.com';
 
 export default function Apply() {
   const [params] = useSearchParams();
   const positionFromQuery = params.get('position') || '';
-  const formRef = useRef();
+  const fileInputRef = useRef();
 
   const [form, setForm] = useState({
     fullName: '',
@@ -48,27 +39,29 @@ export default function Apply() {
 
     setStatus('sending');
 
-    const templateParams = {
-      position:     form.position,
-      full_name:    form.fullName,
-      email:        form.email,
-      phone:        form.phone || 'Not provided',
-      linkedin:     form.linkedin || 'Not provided',
-      portfolio:    form.portfolio || 'Not provided',
-      cover_letter: form.coverLetter,
-      cv_name:      cvFile.name,
-    };
+    const data = new FormData();
+    data.append('Position',      form.position);
+    data.append('Full Name',     form.fullName);
+    data.append('Email',         form.email);
+    data.append('Phone',         form.phone || 'Not provided');
+    data.append('LinkedIn',      form.linkedin || 'Not provided');
+    data.append('Portfolio',     form.portfolio || 'Not provided');
+    data.append('Cover Letter',  form.coverLetter);
+    data.append('CV',            cvFile, cvFile.name);
+    // FormSubmit hidden fields
+    data.append('_subject', `New Job Application — ${form.position}`);
+    data.append('_captcha', 'false');
+    data.append('_template', 'table');
 
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        EMAILJS_PUBLIC_KEY
-      );
-      setStatus('success');
-    } catch (err) {
-      console.error('EmailJS error:', err);
+      const res = await fetch(FS_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      const json = await res.json();
+      if (json.success === 'true' || json.success === true) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch {
       setStatus('error');
     }
   };
@@ -81,10 +74,10 @@ export default function Apply() {
           <div className="apply-success-icon">✓</div>
           <h2>Application Submitted!</h2>
           <p>
-            Thank you, <strong>{form.fullName}</strong>. We've received your application for
-            <strong> {form.position}</strong>. Our team will review it and be in touch within 3–5 business days.
+            Thank you, <strong>{form.fullName}</strong>. We've received your application for&nbsp;
+            <strong>{form.position}</strong>. Our team will review it and be in touch within 3–5 business days.
           </p>
-          <Link to="/careers" className="btn-primary" style={{ marginTop: 24, display: 'inline-block' }}>
+          <Link to="/careers" className="btn-primary" style={{ marginTop: 28, display: 'inline-block' }}>
             Back to Careers
           </Link>
         </div>
@@ -99,7 +92,9 @@ export default function Apply() {
         <div className="container apply-hero-inner" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-label">Apply Now</div>
           <h1 className="apply-hero-title">Join the Softmakr Team</h1>
-          <p className="apply-hero-sub">Fill in your details below and attach your CV. We'll review your application and get back to you shortly.</p>
+          <p className="apply-hero-sub">
+            Fill in your details below and attach your CV. We'll review your application and get back to you shortly.
+          </p>
         </div>
       </section>
 
@@ -112,7 +107,7 @@ export default function Apply() {
               </div>
             )}
 
-            <form ref={formRef} className="apply-form" onSubmit={handleSubmit}>
+            <form className="apply-form" onSubmit={handleSubmit}>
               {/* Position */}
               <div className="apply-form-group">
                 <label>Position Applying For *</label>
@@ -174,6 +169,7 @@ export default function Apply() {
                 <label>Upload CV / Resume *</label>
                 <div className="apply-file-drop">
                   <input
+                    ref={fileInputRef}
                     type="file"
                     id="cv-upload"
                     accept=".pdf,.doc,.docx"
@@ -197,7 +193,9 @@ export default function Apply() {
               </div>
 
               {status === 'error' && (
-                <p className="apply-error">Something went wrong. Please try again or email us directly.</p>
+                <p className="apply-error">
+                  Something went wrong. Please try again or email us directly.
+                </p>
               )}
 
               <button type="submit" className="btn-primary apply-submit-btn" disabled={status === 'sending'}>

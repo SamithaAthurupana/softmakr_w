@@ -74,15 +74,15 @@ export default function Services() {
       {/* Hero */}
       <section className="page-hero">
         <ParticleNetwork />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="container services-hero-inner" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-label">Our Services</div>
-          <h1 className="section-heading">
-            We build great digital products<br />and AI solutions.
+          <h1 className="services-hero-title">
+            We Build Great Digital Products & AI Solutions
           </h1>
-          <p className="section-sub">
+          <p className="services-hero-sub">
             We partner with enterprises, startups, and governments worldwide to develop cutting-edge technology products and Artificial Intelligence solutions that help them achieve their goals.
           </p>
-          <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
+          <div className="services-hero-actions">
             <Link to="/contact" className="btn-primary">Request Live Demo</Link>
             <Link to="/about" className="btn-outline">Learn More</Link>
           </div>

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import ClientLogos from '../components/ClientLogos';
 import TechPartners from '../components/TechPartners';
 import ParticleNetwork from '../components/three/ParticleNetwork';
-import FloatingGeometry from '../components/three/FloatingGeometry';
 import './Home.css';
 
 const serviceGroups = [
@@ -74,21 +73,16 @@ export default function Home() {
       {/* Hero with particle network background */}
       <section className="hero-section">
         <ParticleNetwork />
-        <div className="container hero-inner">
-          <div className="hero-content">
-            <h1 className="hero-title">
-              Software Development & AI Solutions That Fit Your Business
-            </h1>
-            <p className="hero-sub">
-              We partner with enterprises, startups, and governments worldwide to develop cutting-edge technology products and Artificial Intelligence solutions that help them achieve their goals.
-            </p>
-            <div className="hero-actions">
-              <Link to="/contact" className="btn-primary">Request Live Demo</Link>
-              <Link to="/services" className="btn-outline">Learn More</Link>
-            </div>
-          </div>
-          <div className="hero-3d">
-            <FloatingGeometry size={320} />
+        <div className="container hero-inner" style={{ position: 'relative', zIndex: 1 }}>
+          <h1 className="hero-title">
+            Software Development & AI Solutions That Fit Your Business
+          </h1>
+          <p className="hero-sub">
+            We partner with enterprises, startups, and governments worldwide to develop cutting-edge technology products and Artificial Intelligence solutions that help them achieve their goals.
+          </p>
+          <div className="hero-actions">
+            <Link to="/contact" className="btn-primary">Request Live Demo</Link>
+            <Link to="/services" className="btn-outline">Learn More</Link>
           </div>
         </div>
       </section>
