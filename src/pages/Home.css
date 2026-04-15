@@ -62,7 +62,7 @@
 .service-card-title { font-size: 15px; font-weight: 700; color: var(--text);        padding: 14px 16px 6px; }
 .service-card-desc  { font-size: 13px; color: var(--text-muted); padding: 0 16px 16px; line-height: 1.65; }
 
-.group-actions { display: flex; gap: 12px; margin-top: 28px; }
+.group-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
 
 @media (max-width: 900px) { .card-grid-3 { grid-template-columns: repeat(2,1fr); } .hero-title { font-size: 34px; } }
 @media (max-width: 600px) { .card-grid-3 { grid-template-columns: 1fr; }           .hero-title { font-size: 28px; } }
