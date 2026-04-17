@@ -224,7 +224,7 @@
   overflow: hidden;
   text-align: center;
 }
-.stories-cta-inner { max-width: 640px; margin: 0 auto; }
+.stories-cta-inner { max-width: 640px; margin: 0 auto; text-align: center; }
 .stories-cta-text h2 {
   font-size: 34px;
   font-weight: 800;

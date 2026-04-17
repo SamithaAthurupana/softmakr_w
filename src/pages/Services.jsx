@@ -97,7 +97,7 @@ export default function Services() {
         <WaveGrid />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="dark-section-header-services">
-            <h2>What we can build for you</h2>
+            <h2 style={{ textAlign: 'center' }}>What we can build for you</h2>
           </div>
 
           {categories.map((cat, ci) => (

@@ -11,6 +11,7 @@ import Careers from './pages/Careers';
 import Apply from './pages/Apply';
 import ApplySuccess from './pages/ApplySuccess';
 import Resources from './pages/Resources';
+import ArticlePage from './pages/ArticlePage';
 import Contact from './pages/Contact';
 import './index.css';
 
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/careers/apply" element={<Apply />} />
             <Route path="/careers/apply/success" element={<ApplySuccess />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/resources/article/:slug" element={<ArticlePage />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

@@ -253,7 +253,7 @@ export default function TechPartners() {
   return (
     <div className="tech-strip">
       <div className="tech-strip-container">
-        <h4>Our Technology Partners</h4>
+        <h3 style={{ textAlign: 'center' , padding: '0px 20px 30px' }}>Our Technology Partners</h3>
         <div className="tech-marquee-wrapper">
           <div className="tech-marquee-track">
             {logos.map((logo, i) => (

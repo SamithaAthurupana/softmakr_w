@@ -181,7 +181,7 @@ export default function CustomerStories() {
           <div className="stories-cta-text">
             <h2>Ready to become our next success story?</h2>
             <p>We partner with ambitious businesses to build technology that drives real, measurable results — from day one.</p>
-            <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap', justifyContent: 'center' }}>
               <Link to="/contact" className="btn-primary">Request Live Demo</Link>
               <Link to="/about" className="btn-outline">Learn More</Link>
             </div>

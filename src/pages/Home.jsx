@@ -92,10 +92,10 @@ export default function Home() {
 
       {/* Service Groups */}
       {serviceGroups.map((group, gi) => (
-        <section key={gi} className={`service-group ${gi % 2 === 1 ? 'alt-bg' : ''}`}>
+        <section key={gi} className={`service-group  ${gi % 2 === 1 ? 'alt-bg' : ''}`}>
           <div className="container">
             <div className="dark-section-header">
-              <h2>{group.heading}</h2>
+              <h2 style={{ textAlign: 'center' }}>{group.heading}</h2>
             </div>
             <div className="card-grid-3">
               {group.items.map((item, i) => (
