@@ -12,16 +12,19 @@ const serviceGroups = [
         title: 'AI Customer Assistant',
         desc: 'Build intelligent conversational AI agents that handle customer queries, support tickets, and lead qualification 24/7 — reducing response time and operational costs.',
         img: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=400&h=240&fit=crop',
+        articleSlug: '/services/article/llm-ai-assistant-development',
       },
       {
         title: 'AI Omnichannel Intelligence',
         desc: 'Unify customer data across all touchpoints with AI-powered analytics. Deliver personalized experiences across web, mobile, email, and social channels seamlessly.',
         img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=240&fit=crop',
+        articleSlug: '/services/article/predictive-analytics-ml-forecasting',
       },
       {
         title: 'Custom SaaS Platforms',
         desc: 'Design and develop cloud-native SaaS platforms tailored to your business workflows, with multi-tenant architecture, robust APIs, and scalable infrastructure.',
         img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=240&fit=crop',
+        articleSlug: '/services/article/custom-saas-platform-development',
       },
     ],
   },
@@ -32,16 +35,19 @@ const serviceGroups = [
         title: 'HR Workflow Automation',
         desc: 'Streamline HR processes from onboarding to payroll with intelligent automation. Eliminate manual tasks, reduce errors, and free your HR team to focus on people, not paperwork.',
         img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=240&fit=crop',
+        articleSlug: '/services/article/ai-automation-agent-workflows',
       },
       {
         title: 'E-commerce Integration System',
         desc: 'Connect your e-commerce ecosystem — inventory, payments, shipping, and CRM — into one unified, automated platform that scales with your growing business.',
         img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=240&fit=crop',
+        articleSlug: '/services/article/ecommerce-marketplace-development',
       },
       {
         title: 'Data Sync & Integration Pipeline',
         desc: 'Build real-time data pipelines that sync information across your entire tech stack. From ERP to CRM to data warehouses — always consistent, always up to date.',
         img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=240&fit=crop',
+        articleSlug: '/services/article/cloud-infrastructure-devops',
       },
     ],
   },
@@ -52,16 +58,19 @@ const serviceGroups = [
         title: 'UI Campaign & Product Optimization',
         desc: 'Transform your product interfaces with data-driven design decisions. We analyze user behavior, run A/B tests, and craft UI experiences that convert and retain users.',
         img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=240&fit=crop',
+        articleSlug: '/services/article/ux-research-product-audits',
       },
       {
         title: 'Website UX & Landing Page',
         desc: 'Design high-converting landing pages and intuitive website experiences. We combine visual storytelling with UX best practices to drive engagement and achieve your goals.',
         img: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=240&fit=crop',
+        articleSlug: '/services/article/ecommerce-conversion-ux',
       },
       {
         title: 'Mobile App Experience Design',
         desc: 'Create seamless, delightful mobile experiences for iOS and Android. Our design process covers user research, prototyping, and pixel-perfect handoff to developers.',
         img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=240&fit=crop',
+        articleSlug: '/services/article/mobile-app-ux-design',
       },
     ],
   },
@@ -70,7 +79,7 @@ const serviceGroups = [
 export default function Home() {
   return (
     <div className="home-page">
-      {/* Hero with particle network background */}
+      {/* Hero */}
       <section className="hero-section">
         <ParticleNetwork />
         <div className="container hero-inner" style={{ position: 'relative', zIndex: 1 }}>
@@ -87,25 +96,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Client logos */}
       <ClientLogos />
 
       {/* Service Groups */}
       {serviceGroups.map((group, gi) => (
-        <section key={gi} className={`service-group  ${gi % 2 === 1 ? 'alt-bg' : ''}`}>
+        <section key={gi} className={`service-group ${gi % 2 === 1 ? 'alt-bg' : ''}`}>
           <div className="container">
             <div className="dark-section-header">
               <h2 style={{ textAlign: 'center' }}>{group.heading}</h2>
             </div>
             <div className="card-grid-3">
               {group.items.map((item, i) => (
-                <div key={i} className="service-card glow-card">
+                <a
+                  key={i}
+                  href={item.articleSlug}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="service-card glow-card service-card-link"
+                >
                   <div className="service-card-img">
                     <img src={item.img} alt={item.title} />
+                    <span className="service-card-overlay">Read Article →</span>
                   </div>
                   <h3 className="service-card-title">{item.title}</h3>
                   <p className="service-card-desc">{item.desc}</p>
-                </div>
+                </a>
               ))}
             </div>
             {gi === 1 && (
@@ -118,7 +133,6 @@ export default function Home() {
         </section>
       ))}
 
-      {/* Tech Partners */}
       <TechPartners />
     </div>
   );

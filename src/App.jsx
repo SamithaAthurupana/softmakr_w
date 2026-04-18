@@ -12,6 +12,9 @@ import Apply from './pages/Apply';
 import ApplySuccess from './pages/ApplySuccess';
 import Resources from './pages/Resources';
 import ArticlePage from './pages/ArticlePage';
+import ServiceProduct from './pages/ServiceProduct';
+import ServiceCategory from './pages/ServiceCategory';
+import ServiceArticle from './pages/ServiceArticle';
 import Contact from './pages/Contact';
 import './index.css';
 
@@ -32,6 +35,9 @@ export default function App() {
             <Route path="/careers/apply/success" element={<ApplySuccess />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/resources/article/:slug" element={<ArticlePage />} />
+            <Route path="/services/:slug" element={<ServiceProduct />} />
+            <Route path="/services/category/:slug" element={<ServiceCategory />} />
+            <Route path="/services/article/:slug" element={<ServiceArticle />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
