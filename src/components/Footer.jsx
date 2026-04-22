@@ -38,7 +38,7 @@ const footerColumns = [
 const socials = [
   {
     label: 'Email',
-    href: 'mailto:manodya1015@gmail.com',
+    href: '/contact',
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
         <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -83,18 +83,29 @@ export default function Footer() {
             smarter decisions.
           </p>
           <div className="footer-socials">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                className="footer-social-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-              >
-                {s.icon}
-              </a>
-            ))}
+            {socials.map((s) =>
+              s.href.startsWith('/') ? (
+                <Link
+                  key={s.label}
+                  to={s.href}
+                  className="footer-social-btn"
+                  aria-label={s.label}
+                >
+                  {s.icon}
+                </Link>
+              ) : (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  className="footer-social-btn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                >
+                  {s.icon}
+                </a>
+              )
+            )}
           </div>
           {/* <a href="mailto:hello@softmakr.com" className="footer-email">
             in@softmakr.com
