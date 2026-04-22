@@ -96,9 +96,9 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <a href="mailto:hello@softmakr.com" className="footer-email">
-            hello@softmakr.com
-          </a>
+          {/* <a href="mailto:hello@softmakr.com" className="footer-email">
+            in@softmakr.com
+          </a> */}
         </div>
 
         {/* Link columns */}
